@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Calculator</title>
+    <style>
+        /* CSS for styling the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #28a745;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #AF2910;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #1c702f;
+        }
+        input[type="reset"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="reset"]:hover {
+            background-color: #1c702f;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<form id="billForm" action="#" method="post">
+    <h2>calculate your shopping</h2>
+    <label for="item">Enter the price of the product you want:</label>
+    <input type="text" id="price">
+    <br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" required>
+    <br>
+    <label for="age">Enter Your Age:</label>
+    <p >Note: if your age is older than 60 you will get discount!</p>
+    <input type="number" id="age" name="age" min="0" required>
+    <br>
+    <input type="submit" value="Calculate Total">
+    <input type="reset" value="Reset">
+    <div class="result" id="result"></div>
+</form>
+
+<script>
+    document.getElementById('billForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Retrieve form values
+        var price = document.getElementById('price').value;
+        var quantity = parseInt(document.getElementById('quantity').value);
+        var age = parseInt(document.getElementById('age').value);
+
+        // Calculate item price
+     
+
+        // Calculate total cost
+        var total = price * quantity;
+
+        // Apply discount for elderly customers
+        if (age >= 60) {
+            total *= 0.9; // 10% discount
+        }
+
+        // Display result
+        document.getElementById('result').innerText = 'Total Cost: $' + total.toFixed(2);
+    });
+</script>
+
+</body>
+</html>
